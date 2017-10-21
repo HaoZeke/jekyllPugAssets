@@ -1,0 +1,24 @@
+---
+layout: default
+---
+
+.home
+
+| {{ content }}
+
+h1.page-heading Posts
+
+ul.post-list
+  | {% for post in site.posts %}
+  li
+    | {% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
+    span.post-meta {{ post.date | date: date_format }}
+
+    h2
+      a.post-link(href="{{ post.url | relative_url }}")
+        |{{ post.title | escape }}
+  | {% endfor %}
+
+p.rss-subscribe subscribe 
+  a(href="{{ '/feed.xml' | relative_url }}") via RSS
+
